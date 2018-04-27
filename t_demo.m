@@ -8,6 +8,9 @@
 
 % Version 1.0
 
+
+hello there! test tide
+
 echo on
        echo on
        % Load the example.

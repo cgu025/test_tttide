@@ -1,4 +1,6 @@
 %%
+% this is to calculate tide 2.
+
 function [lmax,lmin,Ic] = T_ellipse(uam,uph,vam,vph,sc,lat,t,p,m1,dep)
 %
 wk1   = 2*pi/(23.934469*3600);
@@ -24,11 +26,11 @@ for i=1:length(t)
     vel(i) = vam * cos(w*t(i)+vph/180*pi);
 end
 L    = sqrt(uel.^2+vel.^2);
-lmax = max(L); lmin = min(L);                               % ³¤ÖáºÍ¶ÌÖá
+lmax = max(L); lmin = min(L);                               % é•¿è½´å’ŒçŸ­è½´
 maxP = find(L == max(L));   
 minP = find(L == min(L));
 
-     %%  »æÖÆ³±Á÷ÍÖÔ²
+     %%  ç»˜åˆ¶æ½®æµæ¤­åœ†
       ha = subplot(3,1,1);      
 
 %      subplot('Position',[0.05+(p(3)-1)*0.25,0.1,0.18,0.8],'parent',gcf);
@@ -51,7 +53,7 @@ sgm = (atan_pm(B,A))/2;
 W =sqrt( (uam.^2)*(cos((sgm-uph)/180*pi))^2 + (vam.^2)*(cos((sgm-vph)/180*pi))^2  );
 tha = atan_pm((vam*cos((sgm-vph)/180*pi)),(uam*cos((sgm-uph)/180*pi)));
 %%%%%%%%%%%
-%²ÉÓÃ³±Ï«½Ì²ÄÖÐ·½·¨
+%é‡‡ç”¨æ½®æ±æ•™æä¸­æ–¹æ³•
 % if  uam*cos((sgm-uph)/180*pi)>=0
 % tha2 = asin((vam*cos((sgm-vph)/180*pi))/W);
 % else
@@ -61,7 +63,7 @@ tha = atan_pm((vam*cos((sgm-vph)/180*pi)),(uam*cos((sgm-uph)/180*pi)));
 % Ic=tha2;
 %%%%%%%%%%%%
 Ic = tha;
-%%  ºÍt-tideµÃµ½½á¹ûÒ»Ñù Ê¦ÐÖ³ÌÐò
+%%  å’Œt-tideå¾—åˆ°ç»“æžœä¸€æ · å¸ˆå…„ç¨‹åº
 %      Ic = atan_pm(vel(maxP),uel(maxP)); 
 %      Ic = Ic(1);
      if Ic > 180, Ic = Ic - 360; end
